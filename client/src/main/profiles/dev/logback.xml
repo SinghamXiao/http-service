@@ -1,0 +1,23 @@
+<configuration debug="false" scan="false">
+
+    <property resource="logback.properties"/>
+
+    <appender name="ROOT_APPENDER" class="ch.qos.logback.core.rolling.RollingFileAppender">
+        <file>/home/singhamxiao/logs/${appName}.log</file>
+        <rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
+            <fileNamePattern>/home/singhamxiao/logs/${appName}.%d{yyyy-MM-dd}.log.zip
+            </fileNamePattern>
+            <timeBasedFileNamingAndTriggeringPolicy class="ch.qos.logback.core.rolling.SizeAndTimeBasedFNATP">
+                <maxFileSize>512000KB</maxFileSize>
+            </timeBasedFileNamingAndTriggeringPolicy>
+        </rollingPolicy>
+        <encoder>
+            <pattern>%d{HH:mm:ss.SSS} %5p %c{1}:%L-%m%n</pattern>
+        </encoder>
+    </appender>
+
+    <root level="INFO">
+        <appender-ref ref="ROOT_APPENDER"/>
+    </root>
+
+</configuration>
